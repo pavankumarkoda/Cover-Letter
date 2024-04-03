@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter</title>
+    <style>
+        body {
+            font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif Arial, Helvetica, sans-serif,;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #83a4d4, #b6fbff);
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 210mm;
+            margin: 20mm auto;
+            background: #fff;
+            padding: 20mm;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .print-btn {
+            display: block;
+            width: 100px;
+            padding: 10px;
+            margin: 20px auto;
+            background: #444;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        @media print {
+            body {
+                background: none;
+            }
+            .container {
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <pre id="cover-letter">
+            
+            <b id="applicant-name">Pavan Kumar Koda</b>
+            6-2-15, ppno 12, Raju Colony, Balanagar, Telangana, 500042.
+            <a href="mailto:pavankumarkoda007@gmail.com" id="applicant-email">pavankumarkoda007@gmail.com</a>
+            <span id="current-date">[Date]</span>
+
+            <b id="manager-name">[Hiring Manager’s Name]</b>
+            <b id="company-name">[Company Name]</b>
+            <b id="company-address">[Company Address]</b>
+
+            <b>Dear Hiring Manager,</b>
+            I am writing to express my interest in the <span id="position-name">[Position Name]</span> position at <span id="company-name-2">[Company Name]</span>, as advertised on 
+            <span id="advertised-on">[Job Board/Company Website]</span>. With a strong background in <span id="required-skills">[required Skills]</span>, I am confident in my 
+            ability to contribute to your team’s success.
+          
+            <b>Here are some highlights of my qualifications:</b>
+            <b>Technical Skills:</b>
+            <b>Projects:</b>
+            Developed a registration form using HTML for user registration.
+            Created a Money Index webpage to calculate monthly expenses.
+            Implemented a form to store user details in a MySQL database using Jakarta Servlet, JSTL, and JSP.
+            Completed additional projects, including a calculator, counter, dice game, and temperature converter.
+            Education:
+            Bachelor of Technology in Mechanical Engineering (CGPA: 6.5) from Malla Reddy Engineering College And Management 
+            Sciences.
+            Diploma in Mechanical Engineering (Percentage: 74) from Govt Polytechnic College.
+            High School (CGPA: 8.7) from S N M Z P High School.
+            Certifications:
+            Full-stack development Using Java from Bharat Intern.
+            Java Basics Certificate from Coding Ninjas.
+            Cloud Foundations Certificate from Great Learning.
+            I am excited about the opportunity to contribute my skills and passion to [Company Name]. I am confident that my 
+            technical expertise, strong work ethic, and dedication to continuous learning make me a valuable asset to your team.
+
+            Thank you for considering my application. I look forward to discussing how my qualifications align with your needs. 
+            Please find my resume attached for your review.
+
+            Sincerely,
+
+            Pavan Kumar Koda
+        </pre>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Retrieve the form data from sessionStorage
+            const formData = JSON.parse(sessionStorage.getItem('coverLetterData'));
+
+            // Check if formData exists before trying to replace text
+            if (formData) {
+                // Function to set text content for an element
+                function setTextContent(id, text) {
+                    const element = document.getElementById(id);
+                    if (element) element.textContent = text;
+                }
+
+                // Set the text content for each placeholder
+                setTextContent('manager-name', formData.name);
+                setTextContent('company-name', formData.company);
+                setTextContent('company-address', formData.address);
+                setTextContent('position-name', formData.position);
+                setTextContent('company-name-2', formData.company); // If the company name appears twice
+                setTextContent('advertised-on', formData.advertiseOn);
+                setTextContent('your-skills', formData.yourSkills);
+               
+               
+
+                // Optionally, set the current date
+                setTextContent('current-date', new Date().toLocaleDateString());
+
+                // Clear the sessionStorage
+                sessionStorage.removeItem('coverLetterData');
+            } else {
+                console.error('No form data found in sessionStorage.');
+            }
+        });
+    </script>
+</body>
+</html>
