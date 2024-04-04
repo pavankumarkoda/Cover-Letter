@@ -10,18 +10,19 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(45deg, #83a4d4, #b6fbff);
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
+            background-color: #f9f9f9;
         }
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 20px auto;
             background: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
         .print-btn {
             display: block;
@@ -34,13 +35,6 @@
             text-decoration: none;
             border-radius: 5px;
             cursor: pointer;
-        }
-        pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        .highlight {
-            color: #007bff;
         }
     </style>
 </head>
@@ -89,36 +83,23 @@
             Pavan Kumar Koda
         </pre>
     </div>
+
+    <a href="#" class="print-btn" onclick="generatePDF()">Download PDF</a>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Retrieve the form data from sessionStorage
-            const formData = JSON.parse(sessionStorage.getItem('coverLetterData'));
-
-            // Check if formData exists before trying to replace text
-            if (formData) {
-                // Function to set text content for an element
-                function setTextContent(id, text) {
-                    const element = document.getElementById(id);
-                    if (element) element.textContent = text;
-                }
-
-                // Set the text content for each placeholder
-                setTextContent('manager-name', formData.name);
-                setTextContent('company-name', formData.company);
-                setTextContent('company-address', formData.address);
-                setTextContent('position-name', formData.position);
-                setTextContent('advertised-on', formData.advertiseOn);
-                setTextContent('yourSkills', formData.yourSkills);
-
-                // Optionally, set the current date
-                setTextContent('current-date', new Date().toLocaleDateString());
-
-                // Clear the sessionStorage
-                sessionStorage.removeItem('coverLetterData');
-            } else {
-                console.error('No form data found in sessionStorage.');
-            }
-        });
+        function generatePDF() {
+            var element = document.getElementById('cover-letter');
+            html2pdf()
+                .from(element)
+                .set({
+                    margin: 1,
+                    filename: 'cover_letter.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                })
+                .save();
+        }
     </script>
 </body>
 </html>
