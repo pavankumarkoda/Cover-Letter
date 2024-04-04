@@ -8,17 +8,19 @@
         /* Add some styling to make it visually appealing */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            background-color: #f0f0f0;
             padding: 20px;
         }
         h1 {
-            color: #333;
+            color: #007bff;
+            text-align: center;
         }
         label {
             font-weight: bold;
+            color: #555;
         }
         input[type="text"] {
-            width: 100%;
+            width: calc(100% - 22px);
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -31,35 +33,46 @@
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
-    <h1>Cover Letter Form</h1>
-    <form id="cover-letter-form" action="" method="post">
-        <label for="name">Enter Hiring Manager Name:</label>
-        <input type="text" id="name" name="name"><br>
+    <div class="form-container">
+        <h1>Cover Letter Form</h1>
+        <form id="cover-letter-form" action="" method="post">
+            <label for="name">Enter Hiring Manager Name:</label>
+            <input type="text" id="name" name="name"><br>
 
-        <label for="company">Enter Company Name:</label>
-        <input type="text" id="company" name="company"><br>
+            <label for="company">Enter Company Name:</label>
+            <input type="text" id="company" name="company"><br>
 
-        <label for="Address">Enter Company Address:</label>
-        <input type="text" id="address" name="address"><br>
+            <label for="Address">Enter Company Address:</label>
+            <input type="text" id="address" name="address"><br>
 
-        <label for="position">Enter the Job Position:</label>
-        <input type="text" id="position" name="position"><br>
+            <label for="position">Enter the Job Position:</label>
+            <input type="text" id="position" name="position"><br>
 
-        <label for="advertise">Advertised on:</label>
-        <input type="text" id="advertiseOn" name="advertiseOn"><br>
+            <label for="advertiseOn">Advertised on:</label>
+            <input type="text" id="advertiseOn" name="advertiseOn"><br>
 
-<!--         <label for="skills">Enter Required Skills:</label>
-        <input type="text" id="requiredSkills" name="requiredSkills"><br> -->
+            <label for="yourSkills">Enter Your Skills:</label>
+            <input type="text" id="yourSkills" name="yourSkills"><br>
 
-        <label for="yourSkills">Enter Your Skills:</label>
-        <input type="text" id="your-skills" name="yourSkills"><br>
-
-        <button type="submit">Submit</button>
-    </form>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
     <script>
         document.getElementById('cover-letter-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form submission
@@ -71,8 +84,7 @@
                 address: document.getElementById('address').value,
                 position: document.getElementById('position').value,
                 advertiseOn: document.getElementById('advertiseOn').value,
-                // requiredSkills: document.getElementById('requiredSkills').value,
-                your-skills: document.getElementById('your=skills').value
+                yourSkills: document.getElementById('yourSkills').value
             };
 
             // Store form data in sessionStorage
