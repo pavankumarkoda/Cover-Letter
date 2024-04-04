@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cover Letter</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,9 +23,9 @@
             white-space: pre-wrap;
             word-wrap: break-word;
         }
-        .print-btn {
+        .download-btn {
             display: block;
-            width: 100px;
+            width: 150px;
             padding: 10px;
             margin: 20px auto;
             background: #007bff;
@@ -84,21 +83,19 @@
         </pre>
     </div>
 
-    <a href="#" class="print-btn" onclick="generatePDF()">Download PDF</a>
+    <a href="#" class="download-btn" onclick="generatePDF()">Download PDF</a>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <script>
         function generatePDF() {
             var element = document.getElementById('cover-letter');
-            html2pdf()
-                .from(element)
-                .set({
-                    margin: 1,
-                    filename: 'cover_letter.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2 },
-                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-                })
-                .save();
+            html2pdf(element, {
+                margin: 0.5,
+                filename: 'cover_letter.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            });
         }
     </script>
 </body>
