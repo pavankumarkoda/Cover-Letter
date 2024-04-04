@@ -60,7 +60,7 @@
         <p>
             <b>Dear Hiring Manager,</b><br>
             I am writing to express my interest in the <span id="position-name">[Position Name]</span> position at <span id="company-name-2">[Company Name]</span>, as advertised on 
-            <span id="advertised-on">[Job Board/Company Website]</span>. With a strong background in <span id="yourSkills">[Your Skills]</span>, I am confident in my 
+            <span id="advertised-on">[Job Board/Company Website]</span>. With a strong background in <span id="your-skills">[Your Skills]</span>, I am confident in my 
             ability to contribute to your team’s success.
         </p>
         <p>
@@ -109,8 +109,9 @@
                  setTextContent('company-name-3', formData.company);
                 setTextContent('company-address', formData.address);
                 setTextContent('position-name', formData.position);
+                setTextContent('your-skills', formData.yourskills);
                 setTextContent('advertised-on', formData.advertiseOn);
-                setTextContent('yourSkills', formData.yourskills);
+                
 
                 // Optionally, set the current date
                 setTextContent('current-date', new Date().toLocaleDateString());
