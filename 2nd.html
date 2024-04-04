@@ -6,12 +6,9 @@
     <title>Cover Letter</title>
     <style>
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(45deg, #83a4d4, #b6fbff);
-            color: #333;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
         }
         .container {
             max-width: 210mm;
@@ -22,7 +19,7 @@
         }
         .print-btn {
             display: block;
-            width: 150px;
+            width: 100px;
             padding: 10px;
             margin: 20px auto;
             background: #444;
@@ -49,61 +46,60 @@
 </head>
 <body>
     <div class="container">
-        <pre id="cover-letter">
-            
-            <b id="applicant-name">Pavan Kumar Koda</b>
-            6-2-15, ppno 12, Raju Colony, Balanagar, Telangana, 500042.
-            <a href="mailto:pavankumarkoda007@gmail.com" id="applicant-email">pavankumarkoda007@gmail.com</a>
+        <p>
+            <b>Pavan Kumar Koda</b><br>
+            6-2-15, ppno 12, Raju Colony, Balanagar, Telangana, 500042.<br>
+            <a href="mailto:pavankumarkoda007@gmail.com">pavankumarkoda007@gmail.com</a><br>
             <span id="current-date">[Date]</span>
-
-            <b id="manager-name">[Hiring Manager’s Name]</b>
-            <b id="company-name">[Company Name]</b>
+        </p>
+        <p>
+            <b id="manager-name">[Hiring Manager’s Name]</b><br>
+            <b id="company-name">[Company Name]</b><br>
             <b id="company-address">[Company Address]</b>
-
-            <b>Dear Hiring Manager,</b>
-            I am writing to express my interest in the <span id="position-name">[Position Name]</span> position at <span id="company-name-2">[Company Name]</span>, as advertised on 
-            <span id="advertised-on">[Job Board/Company Website]</span>. With a strong background in <span id="yourSkills">[yourSkills]</span>, I am confident in my 
+        </p>
+        <p>
+            <b>Dear Hiring Manager,</b><br>
+            I am writing to express my interest in the <span id="position-name">[Position Name]</span> position at <span id="company-name">[Company Name]</span>, as advertised on 
+            <span id="advertised-on">[Job Board/Company Website]</span>. With a strong background in <span id="yourSkills">[Your Skills]</span>, I am confident in my 
             ability to contribute to your team’s success.
-          
-            <b>Here are some highlights of my qualifications:</b>
-            <b>Technical Skills:</b>
-            <b>Projects:</b>
-            Developed a registration form using HTML for user registration.
-            Created a Money Index webpage to calculate monthly expenses.
-            Implemented a form to store user details in a MySQL database using Jakarta Servlet, JSTL, and JSP.
-            Completed additional projects, including a calculator, counter, dice game, and temperature converter.
-            Education:
-            Bachelor of Technology in Mechanical Engineering (CGPA: 6.5) from Malla Reddy Engineering College And Management 
-            Sciences.
-            Diploma in Mechanical Engineering (Percentage: 74) from Govt Polytechnic College.
-            High School (CGPA: 8.7) from S N M Z P High School.
-            Certifications:
-            Full-stack development Using Java from Bharat Intern.
-            Java Basics Certificate from Coding Ninjas.
-            Cloud Foundations Certificate from Great Learning.
-            I am excited about the opportunity to contribute my skills and passion to Company. I am confident that my 
-            technical expertise, strong work ethic, and dedication to continuous learning make me a valuable asset to your team.
-
+        </p>
+        <p>
+            <b>Here are some highlights of my qualifications:</b><br>
+            <b>Technical Skills:</b><br>
+            <b>Projects:</b><br>
+            Developed a registration form using HTML for user registration.<br>
+            Created a Money Index webpage to calculate monthly expenses.<br>
+            Implemented a form to store user details in a MySQL database using Jakarta Servlet, JSTL, and JSP.<br>
+            Completed additional projects, including a calculator, counter, dice game, and temperature converter.<br>
+            <b>Education:</b><br>
+            Bachelor of Technology in Mechanical Engineering (CGPA: 6.5) from Malla Reddy Engineering College And Management Sciences.<br>
+            Diploma in Mechanical Engineering (Percentage: 74) from Govt Polytechnic College.<br>
+            High School (CGPA: 8.7) from S N M Z P High School.<br>
+            <b>Certifications:</b><br>
+            Full-stack development Using Java from Bharat Intern.<br>
+            Java Basics Certificate from Coding Ninjas.<br>
+            Cloud Foundations Certificate from Great Learning.<br>
+            I am excited about the opportunity to contribute my skills and passion to <span id="company-name">[Company Name]</span>. I am confident that my 
+            technical expertise, strong work ethic, and dedication to continuous learning make me a valuable asset to your team.<br>
             Thank you for considering my application. I look forward to discussing how my qualifications align with your needs. 
-            Please find my resume attached for your review.
-
-            Sincerely,
-
+            Please find my resume attached for your review.<br>
+            <b>Sincerely,</b><br>
             Pavan Kumar Koda
-        </pre>
+        </p>
     </div>
-    <a href="#" class="print-btn" onclick="generatePDF()">Download PDF</a>
+    <button class="print-btn" onclick="generatePDF()">Download PDF</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <script>
         function generatePDF() {
-            var element = document.getElementById('cover-letter');
-            html2pdf(element, {
-                margin: 0.5,
+            const element = document.querySelector('.container');
+            const opt = {
+                margin: 1,
                 filename: 'cover_letter.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 3 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            });
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().from(element).set(opt).save();
         }
     </script>
 </body>
