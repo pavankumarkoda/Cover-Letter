@@ -22,7 +22,7 @@
         }
         .print-btn {
             display: block;
-            width: 100px;
+            width: 150px;
             padding: 10px;
             margin: 20px auto;
             background: #444;
@@ -48,7 +48,7 @@
     </style>
 </head>
 <body>
-    <div id="container">
+    <div class="container">
         <pre id="cover-letter">
             
             <b id="applicant-name">Pavan Kumar Koda</b>
@@ -95,43 +95,13 @@
     <a href="#" class="print-btn" onclick="generatePDF()">Download PDF</a>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Retrieve the form data from sessionStorage
-            const formData = JSON.parse(sessionStorage.getItem('coverLetterData'));
-
-            // Check if formData exists before trying to replace text
-            if (formData) {
-                // Function to set text content for an element
-                function setTextContent(id, text) {
-                    const element = document.getElementById(id);
-                    if (element) element.textContent = text;
-                }
-
-                // Set the text content for each placeholder
-                setTextContent('applicant-name', formData.applicantName);
-                setTextContent('company-address', formData.companyAddress);
-                setTextContent('company-name', formData.companyName);
-                setTextContent('advertised-on', formData.advertisedOn);
-                setTextContent('position-name', formData.positionName);
-                setTextContent('yourSkills', formData.yourSkills);
-
-                // Optionally, set the current date
-                setTextContent('current-date', new Date().toLocaleDateString());
-
-                // Clear the sessionStorage
-                sessionStorage.removeItem('coverLetterData');
-            } else {
-                console.error('No form data found in sessionStorage.');
-            }
-        });
-
         function generatePDF() {
-            var element = document.getElementById('container');
+            var element = document.getElementById('cover-letter');
             html2pdf(element, {
                 margin: 0.5,
                 filename: 'cover_letter.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
+                html2canvas: { scale: 3 },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
             });
         }
